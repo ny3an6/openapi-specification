@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: User service API
+  description: User service API
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:9999/user/api'
+paths:
+
+  /list:
+    get:
+      tags:
+        - UserList
+      description: список пользователей
+      operationId: getUserList
+      responses:
+        200:
+          description: список пользователей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserListItem'
+  
+components:
+  schemas:
+
+    UserListItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userName:
+          type: string
+        stateId:
+          type: integer
+          format: int64
+        stateName:
+          type: string
+        role:
+          type: string
+
